@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MNC - Faites vos suggestions !</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-input, .form-input.btn-succes {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        .form-input.btn-succes {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-input.btn-succes:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-action {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-update {
+            background-color: #FFA500; /* Couleur orange */
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #FF6347; /* Couleur rouge tomate */
+            color: white;
+        }
+
+        .btn-action:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Suggestions</strong> - À vous de jouer</h1>
+        <p align="center"><i>Inscrivez ici les titres, albums ou simplement artistes qui méritent d'être connus.</i></p>
+        <p align="center"><strong>Partageons les talents cachés !</strong></p>
+
+        <form method="post" action="/add">
+            <div class="row">
+                <div class="form1">
+                    <label for="artiste">Artiste</label>
+                </div>
+                <div class="form2">
+                    <input type="text" id="artiste" name="artiste" placeholder="Nom de l'artiste" class="form-input"><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form1">
+                    <label for="musique">Titre de la musique</label>
+                </div>
+                <div class="form2">
+                    <input type="text" id="musique" name="musique" placeholder="Titre de la musique" class="form-input"><br>
+                </div>
+            </div>
+            <div class="row">
+                <input id="btn-add" type="submit" value="Ajouter" class="form-input btn-succes"><br>
+            </div>
+        </form>
+        
+        <div class="container">
+            <!-- ... Titre et formulaire d'ajout ... -->
+    
+            <table id="table-dyn">
+                <caption>Suggestions postées</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Artiste</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody id="table-content">
+                    {% for index, item in items %}
+                    <tr>
+                        <td>{{ item.split(' - ')[0] }}</td> <!-- Affiche l'artiste -->
+                        <td>{{ item.split(' - ')[1] }}</td> <!-- Affiche le titre de la musique -->
+                        <td class="action-cell">
+                            <!-- Bouton de suppression uniquement -->
+                            <form method="post" action="/delete/{{ index }}" style="display: inline;">
+                                <input type="submit" value="Delete" class="btn-action btn-delete">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
