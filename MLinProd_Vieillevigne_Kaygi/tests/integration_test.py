@@ -1,7 +1,7 @@
 import unittest
 from flask import Flask
 from flask_testing import TestCase
-import app
+import MLinProd_Vieillevigne_Kaygi.app
 
 class TestApp(TestCase):
     def create_app(self):
