@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from app import update_csv
+from MLinProd_Vieillevigne_Kaygi.app import update_csv
 
 class TestUpdateCSV(unittest.TestCase):
     @patch('app.pd.DataFrame.to_csv')
