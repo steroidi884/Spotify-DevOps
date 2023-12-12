@@ -33,7 +33,7 @@ class TestApp(TestCase):
         # Test de suppression d'une suggestion
         response = self.client.post('/delete/0', follow_redirects=True)
         self.assert200(response)
-        self.assertNotIn(b'Artiste Modifié', response.data)  # Assurez-vous que la suggestion a été supprimée
+        self.assertNotIn(b'Artiste Modifié', response.data) 
 
 if __name__ == '__main__':
     unittest.main()
