@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch
 from flask import Flask
 from flask_testing import TestCase
-import app
+import MLinProd_Vieillevigne_Kaygi.app
 class TestAppWithMocks(TestCase):
     def create_app(self):
         app.app.config['TESTING'] = True
