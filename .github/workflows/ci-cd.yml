@@ -24,13 +24,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Unit Tests
-        run: python -m unittest tests/unit_test.py
+        run: python -m unittest MLinProd_Vieillevigne_Kaygi/tests/unit_test.py
 
       - name: Run Integration Tests
-        run: python -m unittest tests/integration_test.py
+        run: python -m unittest MLinProd_Vieillevigne_Kaygi/tests/integration_test.py
 
       - name: Run End-to-End Tests
-        run: python -m unittest tests/end-to-end_test.py
+        run: python -m unittest MLinProd_Vieillevigne_Kaygi/tests/end-to-end_test.py
 
       - name: Run Mock Tests
-        run: python -m unittest tests/mock_test.py
+        run: python -m unittest MLinProd_Vieillevigne_Kaygi/tests/mock_test.py
